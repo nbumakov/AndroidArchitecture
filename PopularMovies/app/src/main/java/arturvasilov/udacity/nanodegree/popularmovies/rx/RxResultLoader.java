@@ -39,6 +39,8 @@ class RxResultLoader<T> extends Loader<RxResult<T>> {
     protected void onStartLoading() {
         if (takeContentChanged() || mResult == null) {
             forceLoad();
+        }else {
+            super.deliverResult(RxResult.onNext(mResult));
         }
     }
 
